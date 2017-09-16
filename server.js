@@ -15,17 +15,17 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // set the home page route
-app.get('/', function(req, res) {
+// app.get('/', function(req, res) {
 
-    // ejs render automatically looks in the views folder
-    res.render('index');
-});
+//     // ejs render automatically looks in the views folder
+//     res.render('index');
+// });
 
 app.get('/css', function(req, res) {
     res.sendFile(__dirname + '/public/css/style.css');
 })
 
-app.use("/blog", php.cgi(__dirname+"/wordpress"));
+app.use("/", php.cgi(__dirname+"/wordpress"));
 
 app.listen(port, function() {
     console.log('My app is running on http://localhost:' + port);
