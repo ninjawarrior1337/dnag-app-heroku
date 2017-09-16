@@ -1,5 +1,8 @@
 var express = require('express');
+var path = require("path");
+var php = require("php");
 var app = express();
+
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -18,6 +21,14 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+app.get('/css', function(req, res) {
+
+    res.send("Hello World!");    
+    res.sendFile(__dirname + '/public/css/style.css');
+})
+
+app.use("/blog", php.cgi(__dirname+"/wordpress"));
+
 app.listen(port, function() {
-    console.log('Our app is running on http://localhost:' + port);
+    console.log('My app is running on http://localhost:' + port);
 });
