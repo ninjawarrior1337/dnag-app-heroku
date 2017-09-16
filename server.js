@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require("path");
-var php = require("php");
+var php = require("node-php");
 var app = express();
 
 
@@ -22,8 +22,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/css', function(req, res) {
-
-    res.send("Hello World!");    
     res.sendFile(__dirname + '/public/css/style.css');
 })
 
